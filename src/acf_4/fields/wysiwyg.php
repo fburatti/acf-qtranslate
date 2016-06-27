@@ -61,17 +61,17 @@ class acf_qtranslate_acf_4_wysiwyg extends acf_field_wysiwyg {
 		$languages = qtrans_getSortedLanguages(true);
 		$values = qtrans_split($field['value'], $quicktags = true);
 		$currentLanguage = $this->plugin->get_active_language();
-		
+
 		// filter value for editor
 		remove_all_filters('acf_the_editor_content');
-		
+
 		// WP 4.3
-		if( version_compare($wp_version, '4.3', '>=' ) ) {				
-			add_filter( 'acf_the_editor_content', 'format_for_editor' );	
+		if( version_compare($wp_version, '4.3', '>=' ) ) {
+			add_filter( 'acf_the_editor_content', 'format_for_editor' );
 		// WP < 4.3
-		} else {		
-			$function = user_can_richedit() ? 'wp_richedit_pre' : 'wp_htmledit_pre';	
-			add_filter('acf_the_editor_content', $function);			
+		} else {
+			$function = user_can_richedit() ? 'wp_richedit_pre' : 'wp_htmledit_pre';
+			add_filter('acf_the_editor_content', $function);
 		}
 
 		echo '<div class="multi-language-field multi-language-field-wysiwyg">';
@@ -105,9 +105,6 @@ class acf_qtranslate_acf_4_wysiwyg extends acf_field_wysiwyg {
 					<?php endif; ?>
 				<?php endif; ?>
 				<div id="wp-<?php echo $id; ?>-editor-container" class="wp-editor-container">
-<<<<<<< HEAD
-					<textarea id="<?php echo $id; ?>" class="qtx-wp-editor-area" name="<?php echo $name; ?>" ><?php	echo apply_filters( 'acf_the_editor_content', $value, 'tinymce' ); ?></textarea>
-=======
 					<textarea id="<?php echo $id; ?>" class="qtx-wp-editor-area" name="<?php echo $name; ?>" ><?php
 
 					if( user_can_richedit() )
@@ -120,7 +117,6 @@ class acf_qtranslate_acf_4_wysiwyg extends acf_field_wysiwyg {
 					}
 
 					?></textarea>
->>>>>>> 07132a41dbc2654e0755d29e7a8be337a02d9ac5
 				</div>
 			</div>
 		<?php endforeach;
