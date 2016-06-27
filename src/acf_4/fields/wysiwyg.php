@@ -105,7 +105,22 @@ class acf_qtranslate_acf_4_wysiwyg extends acf_field_wysiwyg {
 					<?php endif; ?>
 				<?php endif; ?>
 				<div id="wp-<?php echo $id; ?>-editor-container" class="wp-editor-container">
+<<<<<<< HEAD
 					<textarea id="<?php echo $id; ?>" class="qtx-wp-editor-area" name="<?php echo $name; ?>" ><?php	echo apply_filters( 'acf_the_editor_content', $value, 'tinymce' ); ?></textarea>
+=======
+					<textarea id="<?php echo $id; ?>" class="qtx-wp-editor-area" name="<?php echo $name; ?>" ><?php
+
+					if( user_can_richedit() )
+					{
+						echo wp_richedit_pre( $value );
+					}
+					else
+					{
+						echo wp_htmledit_pre( $value );
+					}
+
+					?></textarea>
+>>>>>>> 07132a41dbc2654e0755d29e7a8be337a02d9ac5
 				</div>
 			</div>
 		<?php endforeach;
